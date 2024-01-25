@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}">
+
+</head>
+<body>
+<div class="center">
+    <h1>Login</h1>
+    <form method="post" >
+        {% csrf_token %}
+        <div class="form-error">{{ form.non_field_errors }}</div>
+        {% for f in form %}
+        <div class="inputbox">
+            {{ f }}
+            <span  for="{{ f.id_for_label }}">{{f.label}}</span>
+        </div>
+        <div class="form-error">{{f.errors}}</div>
+        {% endfor %}
+        <button class="inputbox" type="submit">Войти</button>
+    </form>
+</div>
+</body>
+</html>
