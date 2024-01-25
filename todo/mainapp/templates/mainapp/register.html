@@ -1,15 +1,15 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>{{ title }}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}">
-
 </head>
 <body>
+
 <div class="center">
-    <h1>ToDo</h1>
+    <h1>{{title}}</h1>
     <form method="post" >
         {% csrf_token %}
         <div class="form-error">{{ form.non_field_errors }}</div>
@@ -20,9 +20,8 @@
         </div>
         <div class="form-error">{{f.errors}}</div>
         {% endfor %}
-        <button class="inputbox" type="submit">Войти</button>
+        <button class="inputbox" type="submit">Регистрация</button>
     </form>
-    <p>Нет аккаунта? Пройди <a href="{% url 'registration' %}">Регистрацию</a></p>
 </div>
 </body>
 </html>
