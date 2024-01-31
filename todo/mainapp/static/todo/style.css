@@ -1,4 +1,4 @@
-body {
+.reg{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -53,4 +53,45 @@ body {
   background: dodgerblue;
   color: #fff;
   border: #fff;
+}
+.prewatch{
+    display: inline-flex;
+
+}
+.prewatch {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2%;
+    color: white;
+    font-family: "Sansita Swashed", cursive;
+
+
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+
+    min-width: 20%;
+    box-shadow: 0 0 5px 2px #000000;
+    background-color: #1fd2d2;
+    margin: 5%;
+    height: fit-content;
+
+}
+
+
+.tasks_list_for_date{
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    flex-wrap: wrap;
+
+}
+.tasks_list_for_date h2{
+    font-family: "Sansita Swashed", cursive;
+    color: #000000;
+    font-weight: bold;
+
 }

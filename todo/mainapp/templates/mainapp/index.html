@@ -1,19 +1,30 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Главная</title>
-
+     <link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}">
 </head>
-<body>
-    {% for task in taskList %}
-    <div>
-        <h2>{{ task.title }}</h2>
-        <p>{{ task.description }}</p>
-        <p>{{ task.done }}</p>
-        <p>{{ task.created_at | date:"d.m.Y H:i:s"}}</p>
-        <p>{{ task.deadline | date:"d.m.Y H:i:s" }}</p>
-    </div>
+<body >
+<div class="tasks_list_for_date">
+{% for date, task_for_date in deadlinesList.items %}
+    <div class="content">
+        <h2>{{date}}</h2>
+        {% for task in task_for_date %}
+        <div class="prewatch">
+            <h3 >{{ task.title | truncatewords:4 }}</h3>
+            {% if task.done %}
+                <input type="checkbox" id="done" name="done"  checked />
+
+            {% else %}
+                <input type="checkbox" id="done" name="done"/>
+            {% endif %}
+        </div>
+        {% endfor %}
+        </div>
     {% endfor %}
+    </div>
+</div>
 </body>
 </html>

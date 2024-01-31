@@ -12,7 +12,12 @@ from django.contrib.auth.views import LoginView
 
 def index(request):
     taskList=Task.objects.all()
-    return render(request,'mainapp/index.html',{'taskList': taskList})
+    unic_dates = Task.objects.values_list('deadline',flat=True).distinct()
+    deadlinesList={}
+    for date in unic_dates:
+        task_for_date=Task.objects.filter(deadline=date)
+        deadlinesList[str(date)] = task_for_date
+    return render(request,'mainapp/index.html',{'taskList': taskList, 'deadlinesList': deadlinesList})
 
 class LoginUser(LoginView):
     form_class = LoginUserForm

@@ -7,8 +7,8 @@ class Task(models.Model):
     description = models.TextField(verbose_name='описание')
     done = models.BooleanField(default=False, verbose_name='выполнено')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
-    deadline = models.DateTimeField(verbose_name='дедлайн')
+    deadline = models.DateField(verbose_name='дедлайн')
     class Meta:
         verbose_name = 'Задачи'
         verbose_name_plural = 'Задача'
-        ordering = ['-created_at']
+        ordering = ['-deadline']
