@@ -11,13 +11,13 @@ from django.contrib.auth.views import LoginView
 # Create your views here.
 
 def index(request):
-    taskList=Task.objects.all()
-    unic_dates = Task.objects.values_list('deadline',flat=True).distinct()
+    current_user = request.user
+    unic_dates = Task.objects.filter(user=current_user.id).values_list('deadline',flat=True).distinct()
     deadlinesList={}
     for date in unic_dates:
         task_for_date=Task.objects.filter(deadline=date)
         deadlinesList[str(date)] = task_for_date
-    return render(request,'mainapp/index.html',{'taskList': taskList, 'deadlinesList': deadlinesList})
+    return render(request,'mainapp/index.html',{'deadlinesList': deadlinesList})
 
 class LoginUser(LoginView):
     form_class = LoginUserForm
