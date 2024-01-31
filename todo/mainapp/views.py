@@ -1,4 +1,4 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -11,6 +11,8 @@ from django.contrib.auth.views import LoginView
 # Create your views here.
 
 def index(request):
+    if request.user.is_authenticated==False:
+        return redirect('login')
     current_user = request.user
     unic_dates = Task.objects.filter(user=current_user.id).values_list('deadline',flat=True).distinct()
     deadlinesList={}
@@ -47,3 +49,7 @@ class RegisterUser(CreateView):
         login(self.request, user)
         return redirect('login')
 
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')

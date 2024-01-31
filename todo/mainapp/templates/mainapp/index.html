@@ -7,10 +7,21 @@
      <link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}">
 </head>
 <body >
+<div class="navBar">
+
+  <h2 id="logo">ToDo</h2>
+  <a id="addTask" href="#">Задача+</a>
+  <a id="logout" href="{% url 'logout' %}">Выйти</a>
+
+</div>
 <div class="tasks_list_for_date">
 {% for date, task_for_date in deadlinesList.items %}
     <div class="content">
-        <h2>{{date}}</h2>
+        <div class="headTask">
+            <h2>{{date}}</h2>
+            <img src="{% static 'todo/knopka.svg' %}">
+        </div>
+
         {% for task in task_for_date %}
         <div class="prewatch">
             <h3 >{{ task.title | truncatewords:4 }}</h3>
@@ -22,9 +33,8 @@
             {% endif %}
         </div>
         {% endfor %}
-        </div>
-    {% endfor %}
     </div>
+    {% endfor %}
 </div>
 </body>
 </html>

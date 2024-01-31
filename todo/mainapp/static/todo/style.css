@@ -75,7 +75,7 @@
 
     min-width: 20%;
     box-shadow: 0 0 5px 2px #000000;
-    background-color: #1fd2d2;
+    background-color: #d2b914;
     margin: 5%;
     height: fit-content;
 
@@ -94,4 +94,40 @@
     color: #000000;
     font-weight: bold;
 
+}
+
+.navBar{
+    display: flex;
+    flex-direction: row;
+    font-family: "Sansita Swashed", cursive;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navBar a{
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+}
+
+#addTask{
+    background-color: #01fd01;
+    border-radius: 20px;
+    padding: 0.5%;
+}
+
+#logout{
+    background-color: #fd0101;
+    border-radius: 20px;
+    padding: 0.5%;
+}
+
+.content img{
+    height: 40px;
+    width: 40px;
+}
+.headTask{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
 }
